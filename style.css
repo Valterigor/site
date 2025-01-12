@@ -18,13 +18,13 @@ header {
     justify-content: space-between; /* Alinha a logo à esquerda e o título à direita */
     align-items: center; /* Alinha o conteúdo verticalmente */
     padding: 40px 5%; /* Espaçamento interno do cabeçalho */
-    background-color: #020202;
+    background-color: #000;
     color: white;
 }
 
 /* Logo */
 .logo {
-    width: 150px; /* Ajuste o tamanho conforme necessário */
+    width: 300px; /* Ajuste o tamanho conforme necessário */
     height: auto;
 }
 
@@ -116,13 +116,13 @@ a:hover {
 /* Estilo do rodapé */
 footer {
     text-align: center;
-    background-color: #333;
+    background-color: #000000;
     color: white;
     padding: 20px 0;
 }
 
 footer a {
-    color: #4CAF50;
+    color: #58a85b;
     text-decoration: none;
     transition: color 0.3s ease;
 }
