@@ -12,20 +12,30 @@ body {
     line-height: 1.6;
 }
 
-/* Estilo do cabeçalho */
+/* Estilos gerais para o cabeçalho */
 header {
-    text-align: center;
-    padding: 40px 0;
+    display: flex;
+    justify-content: space-between; /* Alinha a logo à esquerda e o título à direita */
+    align-items: center; /* Alinha o conteúdo verticalmente */
+    padding: 40px 5%; /* Espaçamento interno do cabeçalho */
     background-color: #020202;
     color: white;
 }
 
+/* Logo */
+.logo {
+    width: 150px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+}
+
+/* Título */
 h1 {
     font-size: 3em;
     margin-bottom: 10px;
     animation: slideIn 1s ease-out;
 }
 
+/* Descrição do portfólio */
 p {
     font-size: 1.2em;
 }
@@ -44,7 +54,7 @@ p {
 
 /* Estilo da galeria */
 #portfolio {
-    padding: 40px 10%;
+    padding: 40px 5%;
     text-align: center;
 }
 
@@ -58,14 +68,19 @@ h2 {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    gap: 20px;
+    animation: fadeInGallery 1s ease-out;
 }
 
+/* Foto com efeitos de hover */
 .photo {
     margin: 15px;
     position: relative;
     overflow: hidden;
     border-radius: 8px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 30%;
+    min-width: 200px; /* Garante que as fotos tenham um tamanho mínimo */
 }
 
 .photo img {
@@ -75,6 +90,7 @@ h2 {
     transition: transform 0.3s ease;
 }
 
+/* Efeitos de hover nas imagens */
 .photo:hover img {
     transform: scale(1.1);
 }
@@ -84,7 +100,7 @@ h2 {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Efeito de hover no título */
+/* Efeito de hover nos links */
 a {
     color: #050505;
     text-decoration: none;
@@ -125,8 +141,37 @@ footer a:hover {
     }
 }
 
-.gallery {
-    animation: fadeInGallery 1s ease-out;
+/* Responsividade */
+@media (max-width: 768px) {
+    .gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .photo {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .logo {
+        margin-bottom: 20px; /* Dá um espaço entre a logo e o título em telas menores */
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
 }
+
+
 
 
