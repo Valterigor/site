@@ -1,8 +1,8 @@
-// Aqui podemos adicionar algum código interativo, caso necessário
-// Exemplo: abrir uma foto em uma lightbox, adicionar um efeito de rolagem suave, etc.
-
-document.querySelectorAll('.photo img').forEach(item => {
-    item.addEventListener('click', event => {
-        alert('Você clicou em uma foto!');
+// Script para um efeito de fade-in para as imagens enquanto elas são carregadas
+window.addEventListener("load", function() {
+    const photos = document.querySelectorAll('.photo img');
+    photos.forEach((photo, index) => {
+        photo.style.animation = `fadeIn 1s ease ${index * 0.2}s forwards`;
     });
 });
+
