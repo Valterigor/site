@@ -1,0 +1,124 @@
+<busca.html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Buscar Profissionais</title>
+  <style>
+    :root { 
+      --laranja: #FFA500; 
+      --preto: #000; 
+      --cinza-claro: #f8f8f8; 
+      --branco: #fff; 
+    }
+    body { 
+      font-family: Arial, sans-serif; 
+      background-color: var(--cinza-claro); 
+      margin: 0; 
+      padding: 0; 
+      color: #333; 
+    }
+    header { 
+      background-color: var(--preto); 
+      color: var(--laranja); 
+      padding: 1.5rem; 
+      text-align: center; 
+    }
+    main { 
+      max-width: 600px; 
+      margin: 2rem auto; 
+      background: var(--branco); 
+      padding: 2rem; 
+      border-radius: 10px; 
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+    }
+    input[type="text"] { 
+      width: 100%; 
+      padding: 0.75rem; 
+      margin-bottom: 1rem; 
+      border: 1px solid #ccc; 
+      border-radius: 8px; 
+    }
+    ul { 
+      list-style: none; 
+      padding: 0; 
+      display: none; 
+    }
+    li { 
+      margin: 1rem 0; 
+    }
+    button, .link-button { 
+      background-color: var(--laranja); 
+      color: var(--preto); 
+      padding: 0.5rem 1rem; 
+      border: none; 
+      border-radius: 8px; 
+      cursor: pointer; 
+      text-decoration: none; 
+      display: inline-block; 
+      margin-top: 1rem;
+      transition: background-color 0.3s ease;
+    }
+    button:hover, .link-button:hover { 
+      background-color: #e69500; 
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Buscar Profissionais</h1>
+</header>
+
+<main>
+  <input type="text" id="pesquisa" placeholder="Buscar por nome ou especialidade...">
+  <ul id="lista-profissionais"></ul>
+
+  <a href="index.html" class="link-button">Voltar para Página Inicial</a>
+</main>
+
+<script>
+const profissionais = [
+  { nome: "João Silva", especialidade: "Personal Trainer", descricao: "Especialista em musculação.", foto: "joao.jpg", telefone: "11988887777" },
+  { nome: "Ana Souza", especialidade: "Nutricionista", descricao: "Foco em dietas esportivas.", foto: "ana.jpg", telefone: "11977776666" },
+  { nome: "Lucas Rocha", especialidade: "Psicólogo Esportivo", descricao: "Apoio psicológico para atletas.", foto: "lucas.jpg", telefone: "11966665555" },
+  { nome: "Maria Lima", especialidade: "Recreadora", descricao: "Atividades recreativas e lúdicas.", foto: "maria.jpg", telefone: "11955554444" }
+];
+
+const pesquisa = document.getElementById('pesquisa');
+const lista = document.getElementById('lista-profissionais');
+
+pesquisa.addEventListener('input', function() {
+  const termo = pesquisa.value.toLowerCase();
+  lista.innerHTML = '';
+
+  if (termo.trim() === '') {
+    lista.style.display = 'none';
+    return;
+  }
+
+  const resultados = profissionais.filter(p => 
+    p.nome.toLowerCase().includes(termo) || 
+    p.especialidade.toLowerCase().includes(termo)
+  );
+
+  resultados.forEach(p => {
+    const li = document.createElement('li');
+    li.innerHTML = `<strong>${p.nome}</strong> - ${p.especialidade}
+    <br><button onclick='verDetalhes(${JSON.stringify(p)})'>Ver Detalhes</button>`;
+    lista.appendChild(li);
+  });
+
+  lista.style.display = 'block';
+});
+
+function verDetalhes(profissional) {
+  localStorage.setItem('profissionalSelecionado', JSON.stringify(profissional));
+  window.location.href = 'detalhes.html';
+}
+</script>
+
+</body>
+</html>
